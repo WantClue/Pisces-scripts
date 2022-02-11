@@ -90,6 +90,8 @@ function isRoot() {
 		echo ""
 		pushd /home/pi/hnt/paket/paket/packet_forwarder/
 		sudo cp global_conf.json.bk.original global_conf.json
+		wget http://pisces-firmware.sidcloud.cn/PacketForward/Config/V2/EU868.sh -O - | sudo bash
+		sudo ./lora_pkt_fwd start
 		
 		#I need to make this different
 		cd /home/pi/hnt/paket/paket/packet_forwarder/
