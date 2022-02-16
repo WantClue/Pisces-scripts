@@ -22,8 +22,10 @@ function isRoot() {
        echo "What do you want to do?"
 	     echo "   1) Clear Blockchain Data and resync"
 	     echo "   2) Fix PortForwarder Issue"
-	     echo "   3) Fix Nginx Issue"
-	     echo "   4) Exit"
+	     echo "   3) Fix Dashboard not loading"
+	     echo "   4) Get a new Snapshot"
+	     echo "   5) Fix Peerbook not found error"
+	     echo "   6) Exit"
  
       until [[ ${MENU_OPTION} =~ ^[1-4]$ ]]; do
 		read -rp "Select an option [1-4]: " MENU_OPTION
@@ -39,6 +41,12 @@ function isRoot() {
 		      nginx
 		      ;;
 	      4)
+		      newSnapshot
+		      ;;
+	      5)
+		      
+		      ;;
+	      6)
 		      exit 0
 		      ;;
 	      esac
@@ -109,10 +117,16 @@ function isRoot() {
 	
 	
 	}
+	
+	function newSnapshot() {
+	
+	
+	}
 
 #Check for full Disk
 df -h 
 	echo "If your Disk Usage is below 100% you´re good to go!"
 	echo ""
+	echo "You can ignore most of the error Logs of Dashboard"
 	echo "Just leave the device online"
 	echo "If not run this script again and choose: Clear Blockchain Data and resync"
