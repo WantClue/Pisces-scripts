@@ -24,7 +24,7 @@ function isRoot() {
 	     echo "   2) Fix PortForwarder Issue"
 	     echo "   3) Fix Dashboard not loading"
 	     echo "   4) Get a new Snapshot"
-	     echo "   5) Fix Peerbook not found error"
+	     echo "   5) Decrease Peerbook not found error"
 	     echo "   6) Exit"
  
       until [[ ${MENU_OPTION} =~ ^[1-4]$ ]]; do
@@ -44,7 +44,7 @@ function isRoot() {
 		      newSnapshot
 		      ;;
 	      5)
-		      
+		      peerBookIncrease
 		      ;;
 	      6)
 		      exit 0
@@ -77,7 +77,6 @@ function isRoot() {
 		echo ""
 		echo "	1) Yes"
 		echo "	2) No"
-		echo "	3) Exit"
 		
 		until [[ ${MENU_OPTION} =~ ^[1-2]$ ]]; do
 		read -rp "Select an option [1-2]: " MENU_OPTION
@@ -121,6 +120,34 @@ function isRoot() {
 	function newSnapshot() {
 	
 	
+	}
+	
+	function peerBookIncrease() {
+	
+		echt "Do you really want to change the Peerbook settings?"
+		echo "This is testing only!!!"
+		echo ""
+		echo "	1) Yes"
+		echo "	2) No"
+		
+		until [[ ${MENU_OPTION} =~ ^[1-2]$ ]]; do
+		read -rp "Select an option [1-2]: " MENU_OPTION
+			
+		done
+	 	case "${MENU_OPTION}" in
+	      		1)	
+		      		peerBook
+		     		;;
+	     		 2)
+		     		exit 0
+		     		;;
+	      
+	      		esac
+	
+	}
+	
+	function peerBook() {
+	wget https://raw.githubusercontent.com/inigoflores/pisces-p100-tools/main/setting_tweaks/apply.sh -O - | sudo bash
 	}
 
 #Check for full Disk
