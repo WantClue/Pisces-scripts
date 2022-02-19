@@ -5,5 +5,5 @@ This troubleshoot script is a collection of helpful scripts to help miners (Pisc
 
 You can run this script by:
 ```
-wget https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/troubleshoot.sh | sudo -O bash
+wget https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/troubleshoot.sh -O - | sudo bash
 ```
