@@ -93,27 +93,45 @@ function isRoot() {
 	      		esac
 		
 		
+				
+	
+	}
+	
+	function portForwarderProblem() {
 		echo "Now I copy the original global_conf file to global_conf.json.bk.original"
 		echo ""
 		pushd /home/pi/hnt/paket/paket/packet_forwarder/
 		sudo cp global_conf.json.bk.original global_conf.json
-		wget http://pisces-firmware.sidcloud.cn/PacketForward/Config/V2/EU868.sh -O - | sudo bash
+		wget #I need to upload my EU 868 file!!! Then ppl can download it 
 		sudo ./lora_pkt_fwd start
 		
 		#I need to make this different
 		cd /home/pi/hnt/paket/paket/packet_forwarder/
 		sudo ./lora_pkt_fwd start
-		
-	
-	}
-	
-	function portForwarderProblem() {
-	
 	}
 	
 	
 	function nginx() {
-	
+		echo ""
+		echo "Did you got the Dashboard error message:"
+		echo "Bad Gateway Error 400 ?"
+		echo "	1) Yes"
+		echo "	2) No"
+		
+		until [[ ${MENU_OPTION} =~ ^[1-2]$ ]]; do
+		read -rp "Select an option [1-2]: " MENU_OPTION
+			
+		done
+	 	case "${MENU_OPTION}" in
+	      		1)
+		      		echo "open the Dashboard with https://yourmineripadress"
+		     		;;
+	     		 2)
+		     		echo "You´re good nothing is wrong!"
+				exit 0
+		     		;;
+	      
+	      		esac
 	
 	}
 	
