@@ -21,7 +21,7 @@ function initialQuestions() {
 function manageMenu() {
        echo "What do you want to do?"
 	     echo "   1) Clear Blockchain Data and resync"
-	     echo "   2) Fix PortForwarder Issue"
+	     echo "   2) Fix PacketForwarder Issue"
 	     echo "   3) Fix Dashboard not loading"
 	     echo "   4) Get a new Snapshot"
 	     echo "   5) Decrease Peerbook not found error"
