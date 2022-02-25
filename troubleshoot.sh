@@ -35,7 +35,7 @@ function isRoot() {
 		      clearBlockchain
 		      ;;
 	      2)
-		      portForwarder
+		      packetForwarder
 		      ;;
 	      3)
 		      nginx
@@ -70,9 +70,10 @@ function isRoot() {
 		sudo wget https://raw.githubusercontent.com/briffy/PiscesQoLDashboard/main/install.sh -O - | sudo bash
 	}
 
-	function portForwarder() {
+	function packetForwarder() {
 		
 		sudo /home/pi/hnt/paket/paket/packet_forwarder/lora_pkt_fwd
+		echo "If your PacketForwarder is green in Dashboard don´t run this!"
 		echo "Did you get an error?"
 		echo ""
 		echo "	1) Yes"
@@ -84,7 +85,7 @@ function isRoot() {
 		done
 	 	case "${MENU_OPTION}" in
 	      		1)
-		      		portForwarderProblem
+		      		packetForwarderProblem
 		     		;;
 	     		 2)
 		     		exit 0
@@ -97,17 +98,25 @@ function isRoot() {
 	
 	}
 	
-	function portForwarderProblem() {
+	function packetForwarderProblem() {
 		echo "Now I copy the original global_conf file to global_conf.json.bk.original"
 		echo ""
+		
 		pushd /home/pi/hnt/paket/paket/packet_forwarder/
 		sudo cp global_conf.json.bk.original global_conf.json
-		wget #I need to upload my EU 868 file!!! Then ppl can download it 
-		sudo ./lora_pkt_fwd start
 		
-		#I need to make this different
+		echo "Done!"
+		echo "Now I download the tweaked file"
+		
+		wget https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/packet_fwd_fix.json -o /home/pi/hnt/paket/paket/packet_forwarder/global_conf.json
+		
+		echo "Done!"
+		echo "Now we can start the Packetforwarder again"		
+		
 		cd /home/pi/hnt/paket/paket/packet_forwarder/
 		sudo ./lora_pkt_fwd start
+				
+		echo "Please check the Dashboard if your PaketForwarder is now running"
 	}
 	
 	
@@ -165,7 +174,18 @@ function isRoot() {
 	}
 	
 	function peerBook() {
-	wget https://raw.githubusercontent.com/inigoflores/pisces-p100-tools/main/setting_tweaks/apply.sh -O - | sudo bash
+	echo "Now I copy your old sys.conf to the new file sys.config.old"
+	echo "Then I download the updated file"
+	echo "Grab a beer and enjoy the increased PeerBook"
+	
+	echo "download complete!"
+	echo "stopping miner now"
+	docker stop miner
+	curl -sLf https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/sys.conf.update -o /home/pi/hnt/miner/configs/sys.config
+	docker start miner
+	echo "Done!"
+	echo -e "In order to verify that the changes are working, run every few minutes \n"
+	echo -e "sudo docker exec miner miner peer book -c \n"
 	}
 
 #Check for full Disk
