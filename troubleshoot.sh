@@ -311,8 +311,8 @@ fi
 	echo -e "sudo docker exec miner miner peer book -c \n"
 	}
 
-#Check for full Disk
-df -h 
+	#Check for full Disk
+	df -h 
 	echo "If your Disk Usage is below 100% you´re good to go!"
 	echo ""
 	echo "You can ignore most of the error Logs of Dashboard"
