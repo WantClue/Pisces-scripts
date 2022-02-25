@@ -186,10 +186,13 @@ function peerBook() {
 	echo -e "sudo docker exec miner miner peer book -c \n"
 }
 
-	#Check for full Disk
-	df -h 
-	echo "If your Disk Usage is below 100% you´re good to go!"
-	echo ""
-	echo "You can ignore most of the error Logs of Dashboard"
-	echo "Just leave the device online"
-	echo "If not run this script again and choose: Clear Blockchain Data and resync"
+initialQuestions
+manageMenu
+
+#Check for full Disk
+df -h 
+echo "If your Disk Usage is below 100% you´re good to go!"
+echo ""
+echo "You can ignore most of the error Logs of Dashboard"
+echo "Just leave the device online"
+echo "If not run this script again and choose: Clear Blockchain Data and resync"
