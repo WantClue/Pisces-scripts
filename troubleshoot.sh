@@ -144,7 +144,7 @@ function nginx() {
 }
 	
 function newSnapshot() {
-	
+	wget https://raw.githubusercontent.com/moophlo/pisces-miner-scripts/main/clear_resync.sh -O - | sudo bash
 }
 	
 function peerBookIncrease() {
