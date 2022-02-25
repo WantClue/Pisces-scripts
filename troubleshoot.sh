@@ -27,8 +27,8 @@ function manageMenu() {
 	     echo "   5) Decrease Peerbook not found error"
 	     echo "   6) Exit"
  
-      until [[ ${MENU_OPTION} =~ ^[1-4]$ ]]; do
-		read -rp "Select an option [1-4]: " MENU_OPTION
+      until [[ ${MENU_OPTION} =~ ^[1-6]$ ]]; do
+		read -rp "Select an option [1-6]: " MENU_OPTION
 	done
 	    case "${MENU_OPTION}" in
 	      1)
