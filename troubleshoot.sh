@@ -7,7 +7,7 @@ function isRoot() {
 	fi
 }
 
- function initialQuestions() {
+function initialQuestions() {
         echo "Welcome to the Pisces Troubleshoot Script!"
         echo "The git repository is available at: https://github.com/WantClue/Pisces-scripts"
         echo ""
@@ -16,9 +16,9 @@ function isRoot() {
         echo ""
         read -n1 -r -p "Press any key to continue..."
         
- }
+}
  
- function manageMenu() {
+function manageMenu() {
        echo "What do you want to do?"
 	     echo "   1) Clear Blockchain Data and resync"
 	     echo "   2) Fix PortForwarder Issue"
@@ -51,11 +51,10 @@ function isRoot() {
 		      ;;
 	      esac
  
- }
+}
 
 
-
-	function clearBlockchain() {
+function clearBlockchain() {
 
 		echo "Stopping the miner!!!"
 		sudo docker stop miner
@@ -68,9 +67,9 @@ function isRoot() {
 		sleep 10
 		pushd /home/admin
 		sudo wget https://raw.githubusercontent.com/briffy/PiscesQoLDashboard/main/install.sh -O - | sudo bash
-	}
+}
 
-	function packetForwarder() {
+function packetForwarder() {
 		
 		sudo /home/pi/hnt/paket/paket/packet_forwarder/lora_pkt_fwd
 		echo "If your PacketForwarder is green in Dashboard don´t run this!"
@@ -96,9 +95,9 @@ function isRoot() {
 		
 				
 	
-	}
+}
 	
-	function packetForwarderProblem() {
+function packetForwarderProblem() {
 		echo "Now I copy the original global_conf file to global_conf.json.bk.original"
 		echo ""
 		
@@ -117,10 +116,10 @@ function isRoot() {
 		sudo ./lora_pkt_fwd start
 				
 		echo "Please check the Dashboard if your PaketForwarder is now running"
-	}
+}
 	
 	
-	function nginx() {
+function nginx() {
 		echo ""
 		echo "Did you got the Dashboard error message:"
 		echo "Bad Gateway Error 400 ?"
@@ -142,13 +141,13 @@ function isRoot() {
 	      
 	      		esac
 	
-	}
+}
 	
-	function newSnapshot() {
+function newSnapshot() {
 	
-	}
+}
 	
-	function peerBookIncrease() {
+function peerBookIncrease() {
 	
 		echt "Do you really want to change the Peerbook settings?"
 		echo "This is testing only!!!"
@@ -170,9 +169,9 @@ function isRoot() {
 	      
 	      		esac
 	
-	}
+}
 	
-	function peerBook() {
+function peerBook() {
 	echo "Now I copy your old sys.conf to the new file sys.config.old"
 	echo "Then I download the updated file"
 	echo "Grab a beer and enjoy the increased PeerBook"
@@ -185,7 +184,7 @@ function isRoot() {
 	echo "Done!"
 	echo -e "In order to verify that the changes are working, run every few minutes \n"
 	echo -e "sudo docker exec miner miner peer book -c \n"
-	}
+}
 
 	#Check for full Disk
 	df -h 
