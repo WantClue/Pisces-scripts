@@ -12,4 +12,4 @@ wget https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/troubleshoot
 ```
 
 
-Some parts of this script use a different repository created by https://www.github.com/inigoflores
+Some parts of this script use a different repository created by https://www.github.com/inigoflores and https://www.github.com/moophlo
