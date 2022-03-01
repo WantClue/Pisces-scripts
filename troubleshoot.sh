@@ -136,7 +136,7 @@ function newSnapshot() {
 	
 function peerBookIncrease() {
 	
-		echt "Do you really want to change the Peerbook settings?"
+		echo "Do you really want to change the Peerbook settings?"
 		echo "This is testing only!!!"
 		echo ""
 		echo "	1) Yes"
