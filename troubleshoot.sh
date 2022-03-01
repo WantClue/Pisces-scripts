@@ -78,9 +78,8 @@ function clearBlockchain() {
 
 function packetForwarder() {
 		
-		sudo /home/pi/hnt/paket/paket/packet_forwarder/lora_pkt_fwd
-		echo "If your PacketForwarder is green in Dashboard don´t run this!"
-		echo "Did you get an error?"
+		echo "Test"
+		echo "Test"
 		echo ""
 		echo "	1) Yes"
 		echo "	2) No"
@@ -90,8 +89,8 @@ function packetForwarder() {
 			
 		done
 	 	case "${MENU_OPTION}" in
-	      		1)
-		      		wget https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/packet_fwd_solution.sh -O - | sudo bash
+	      		1)	
+		      		echo "Test"
 		     		;;
 	     		 2)
 		     		exit 0
