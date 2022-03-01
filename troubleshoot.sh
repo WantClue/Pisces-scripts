@@ -91,7 +91,7 @@ function packetForwarder() {
 		done
 	 	case "${MENU_OPTION}" in
 	      		1)
-		      		packetForwarderProblem
+		      		wget https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/packet_fwd_solution.sh -O - | sudo bash
 		     		;;
 	     		 2)
 		     		exit 0
@@ -104,26 +104,6 @@ function packetForwarder() {
 	
 }
 	
-function packetForwarderProblem() {
-		echo "Now I copy the original global_conf file to global_conf.json.bk.original"
-		echo ""
-		
-		pushd /home/pi/hnt/paket/paket/packet_forwarder/
-		sudo cp global_conf.json.bk.original global_conf.json
-		
-		echo "Done!"
-		echo "Now I download the tweaked file"
-		
-		wget https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/packet_fwd_fix.json -o /home/pi/hnt/paket/paket/packet_forwarder/global_conf.json
-		
-		echo "Done!"
-		echo "Now we can start the Packetforwarder again"		
-		
-		cd /home/pi/hnt/paket/paket/packet_forwarder/
-		sudo ./lora_pkt_fwd start
-				
-		echo "Please check the Dashboard if your PaketForwarder is now running"
-}
 	
 	
 function nginx() {
@@ -168,7 +148,7 @@ function peerBookIncrease() {
 		done
 	 	case "${MENU_OPTION}" in
 	      		1)	
-		      		peerBook
+		      		wget https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/peerbook_fix.sh -O - | sudo bash
 		     		;;
 	     		 2)
 		     		exit 0
@@ -178,20 +158,6 @@ function peerBookIncrease() {
 	
 }
 	
-function peerBook() {
-	echo "Now I copy your old sys.conf to the new file sys.config.old"
-	echo "Then I download the updated file"
-	echo "Grab a beer and enjoy the increased PeerBook"
-	
-	echo "download complete!"
-	echo "stopping miner now"
-	docker stop miner
-	curl -sLf https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/sys.conf.update -o /home/pi/hnt/miner/configs/sys.config
-	docker start miner
-	echo "Done!"
-	echo -e "In order to verify that the changes are working, run every few minutes \n"
-	echo -e "sudo docker exec miner miner peer book -c \n"
-}
 
 initialQuestions
 manageMenu
