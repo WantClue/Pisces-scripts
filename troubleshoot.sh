@@ -152,6 +152,8 @@ function peerBookIncrease() {
 		echo "Do you really want to change the Peerbook settings?"
 		echo "This is testing only!!!"
 		echo ""
+		echo "You need to type in >>sudo docker exec miner miner peer book -c<< to see the increasement"
+		echo ""
 		echo "	1) Yes"
 		echo "	2) No"
 		echo "	3) Restore backup of sys.config"
