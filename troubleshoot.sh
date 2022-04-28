@@ -25,7 +25,7 @@ function manageMenu() {
 	     echo "   2) Fix PacketForwarder Issue"
 	     echo "   3) Fix Dashboard not loading"
 	     echo "   4) Get a new Snapshot"
-	     echo "   5) Decrease Peerbook not found error"
+	     echo "   5) Fix Not Found ERROR (Peerbook increase)"
 	     echo "   6) Exit"
  
       until [[ ${MENU_OPTION} =~ ^[1-6]$ ]]; do
@@ -143,6 +143,7 @@ function nginx() {
 }
 	
 function newSnapshot() {
+	
 	wget https://raw.githubusercontent.com/moophlo/pisces-miner-scripts/main/clear_resync.sh -O - | sudo bash
 }
 	
@@ -153,6 +154,7 @@ function peerBookIncrease() {
 		echo ""
 		echo "	1) Yes"
 		echo "	2) No"
+		echo "	3) Restore backup of sys.config"
 		
 		until [[ ${MENU_OPTION} =~ ^[1-2]$ ]]; do
 		read -rp "Select an option [1-2]: " MENU_OPTION
@@ -162,10 +164,12 @@ function peerBookIncrease() {
 	      		1)	
 		      		wget https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/peerbook_fix.sh -O - | sudo bash
 		     		;;
-	     		 2)
+	     		2)
 		     		exit 0
 		     		;;
-	      
+	      		3)
+				echo "currently no backup you need to do this manually"
+				;;
 	      		esac
 	
 }
