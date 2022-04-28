@@ -20,7 +20,8 @@ function initialQuestions() {
  
 function manageMenu() {
        echo "What do you want to do?"
-	     echo "   1) Clear Blockchain Data and resync"
+	     echo "   1) Clear Blockchain Data and resync AUTOMATION"
+	     echo "	This will automatically clear and resync so you don´t need to do this more than once"
 	     echo "   2) Fix PacketForwarder Issue"
 	     echo "   3) Fix Dashboard not loading"
 	     echo "   4) Get a new Snapshot"
@@ -62,18 +63,31 @@ function manageMenu() {
 
 
 function clearBlockchain() {
-
-		echo "Stopping the miner!!!"
-		sudo docker stop miner
-		sleep 2
-		echo "Clearing Blockchain-Data!!!"
-		sleep 2
-		rm -rf /home/pi/hnt/miner/blockchain.db
-		rm -rf /home/pi/hnt/miner/ledger.db
-		echo "Downloading the latest Data. This will take some time leave the Miner online!!!"
-		sleep 10
-		pushd /home/admin
-		sudo wget https://raw.githubusercontent.com/briffy/PiscesQoLDashboard/main/install.sh -O - | sudo bash
+		echo "Using the moophlo cronjob scrypt!"
+		
+		local PS3='Please enter sub option: '
+  		local options=("Install automation" "Clear Blockchain once" "Sub menu quit")
+  		local opt
+  		select opt in "${options[@]}"
+  			do
+      				case $opt in
+          				"Install automation")
+						wget https://raw.githubusercontent.com/moophlo/pisces-miner-scripts/main/crontab_job.sh -O - | sudo bash
+						return
+						;;
+					"Clear Blockchain once")
+						wget https://raw.githubusercontent.com/moophlo/pisces-miner-scripts/main/clear_resync.sh -O - | sudo bash
+						return
+						;;
+          				"Sub menu quit")
+              					return
+              					;;
+          				*) echo "invalid option $REPLY";;
+      				esac
+  			done
+		
+		
+		
 }
 
 function packetForwarder() {
@@ -88,9 +102,10 @@ function packetForwarder() {
   		select opt in "${options[@]}"
   			do
       				case $opt in
-          				"Sub menu item 1")
+          				"Fix issue")
              				 	sudo wget https://raw.githubusercontent.com/inigoflores/pisces-p100-tools/main/Packet_Forwarder_V2/update.sh -O - | sudo bash
-             					;;
+             					return
+						;;
           				"Sub menu quit")
               					return
               					;;
