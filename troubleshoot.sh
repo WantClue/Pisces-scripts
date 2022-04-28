@@ -83,24 +83,26 @@ function packetForwarder() {
 		echo ""
 		echo "	1) Yes"
 		echo "	2) No"
-		
-		until [[ ${MENU_OPTION} =~ ^[1-2]$ ]]; do
-		read -rp "Select an option [1-2]: " MENU_OPTION
+		local PS3='Please enter sub option: '
+  		local options=("Sub menu item 1" "Sub menu item 2" "Sub menu quit")
+  		local opt
+  		select opt in "${options[@]}"
+  			do
+      				case $opt in
+          				"Sub menu item 1")
+             				 	echo "you chose sub item 1"
+             					;;
+          				"Sub menu item 2")
+              					echo "you chose sub item 2"
+              					;;
+          				"Sub menu quit")
+              					return
+              					;;
+          				*) echo "invalid option $REPLY";;
+      				esac
+  			done
 			
-		done
-	 	case "${MENU_OPTION}" in
-	      		1)	
-		      		echo "Test"
-		     		;;
-	     		 2)
-		     		exit 0
-		     		;;
-	      
-	      		esac
-		
-		
-				
-	
+			
 }
 	
 	
