@@ -78,23 +78,19 @@ function clearBlockchain() {
 
 function packetForwarder() {
 		
-		echo "Test"
-		echo "Test"
+		echo "By using this fix you will change some files in your Hotspot"
+		echo "If you´re sure what you´re doing go ahead an choos an option"
+		echo "This script uses the Pkt Fwd Fix of inigoflores!"
 		echo ""
-		echo "	1) Yes"
-		echo "	2) No"
 		local PS3='Please enter sub option: '
-  		local options=("Sub menu item 1" "Sub menu item 2" "Sub menu quit")
+  		local options=("Fix issue" "Sub menu quit")
   		local opt
   		select opt in "${options[@]}"
   			do
       				case $opt in
           				"Sub menu item 1")
-             				 	echo "you chose sub item 1"
+             				 	sudo wget https://raw.githubusercontent.com/inigoflores/pisces-p100-tools/main/Packet_Forwarder_V2/update.sh -O - | sudo bash
              					;;
-          				"Sub menu item 2")
-              					echo "you chose sub item 2"
-              					;;
           				"Sub menu quit")
               					return
               					;;
