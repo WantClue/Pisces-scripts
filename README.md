@@ -2,7 +2,8 @@
 
 This troubleshoot script is a collection of helpful scripts to help miners (Pisces) to work better.
 
-
+# SUPPORT MY WORK
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R5R0IYN9V)
 
 
 
