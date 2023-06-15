@@ -16,7 +16,7 @@ local_id="/etc/thingsix-forwarder/unknown_gateways.yaml"
 
 
 
-function install(){
+function install() {
     echo -e "${GREEN}Module: Install ThingsIX${NC}"
 	echo -e "${YELLOW}================================================================${NC}"
 	if [[ "$USER" != "root" ]]; then
@@ -80,7 +80,7 @@ function onboard() {
     echo -e "${CYAN}Please enter your Polygon Wallet address to onboard this device to your Wallet${NC}"
     read wallet
     docker exec thingsix-forwarder ./forwarder gateway onboard-and-push $id $wallet
-    
+
 }
 
 
