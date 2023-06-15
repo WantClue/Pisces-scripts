@@ -5,5 +5,7 @@ I recently moved my Helium Pisces P100 Miner to the ThingsIX Network and to allo
 # SUPPORT MY WORK
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R5R0IYN9V)
 
-
-bash -i <(curl -s https://github.com/WantClue/Pisces-scripts/blob/main/ThingsIX/setup.sh)
+To run the installation process on your Pisces Gateway just use the following command
+'''
+bash -i <(curl -s https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/ThingsIX/setup.sh)
+'''
