@@ -34,11 +34,11 @@ function install() {
                 exit
     fi
     if [ -d "$dir_path" ]; then
-    echo -e "${CYAN}Directory exists${NC}"
-        else
-    echo -e "${RED}Directory does not exist${NC}"
-    echo -e "${RED}Directory will be created ...${NC}"
-    mkdir -p /etc/thingsix-forwarder
+        echo -e "${CYAN}Directory exists${NC}"
+    else
+        echo -e "${RED}Directory does not exist${NC}"
+        echo -e "${RED}Directory will be created ...${NC}"
+        mkdir -p /etc/thingsix-forwarder
     fi
 
     if whiptail --yesno "Would you like to proceed and change the global conf?" 8 60; then
@@ -75,7 +75,7 @@ function install() {
             exit
         fi
     fi
-    
+
     if whiptail --yesno "You're almost done we now need to start the actual forwarder Docker Container. Are you ready?" 8 60; then
         docker run -d --name thingsix-forwarder -p 1685:1680/udp --restart unless-stopped -v /etc/thingsix-forwarder:/etc/thingsix-forwarder ghcr.io/thingsixfoundation/packet-handling/forwarder:1.1.1 --net=main
     else
