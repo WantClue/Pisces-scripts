@@ -65,7 +65,7 @@ function install() {
         exit
     fi
 
-    if [[ $(docker ps -f "name=thingsix-forwarder" --format "{{.Names}}") == "thingsix-forwarder"]]; then
+    if [[ $(docker ps -f "name=thingsix-forwarder" --format "{{.Names}}") == "thingsix-forwarder" ]]; then
         if whiptail --yesno "The Docker container 'thingsix-forwarder' is already running. Do you want to remove it?" 8 60; then
             docker stop thingsix-forwarder
             docker rm thingsix-forwarderx
