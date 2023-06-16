@@ -9,3 +9,7 @@ To run the installation process on your Pisces Gateway just use the following co
 ```
 bash -i <(curl -s https://raw.githubusercontent.com/WantClue/Pisces-scripts/main/ThingsIX/setup.sh)
 ```
+
+# Video 
+can be found here:
+https://youtu.be/-Wos0KT0kPE
