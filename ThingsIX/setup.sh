@@ -48,12 +48,34 @@ function install() {
         exit
     fi
 
+    if [[ $(docker ps -f "name=gwmp-mux" --format "{{.Names}}") == "gwmp-mux" ]]; then
+        if whiptail --yesno "The Docker container 'gwmp-mux' is already running. Do you want to remove it?" 8 60; then
+            docker stop gwmp-mux
+            docker rm gwmp-mux
+            echo "Container 'gwmp-mux' removed."
+        else
+            echo "Aborting..."
+            exit
+        fi
+    fi
+
     if whiptail --yesno "Now we need to start the Docker Container for the thingsix mux are you ready?" 8 60; then
         docker run -d --restart unless-stopped --network host --name gwmp-mux ghcr.io/thingsixfoundation/gwmp-mux:latest --host 1688 --client 127.0.0.1:1680 --client 127.0.0.1:1685
     else
         exit
     fi
 
+    if [[ $(docker ps -f "name=thingsix-forwarder" --format "{{.Names}}") == "thingsix-forwarder"]]; then
+        if whiptail --yesno "The Docker container 'thingsix-forwarder' is already running. Do you want to remove it?" 8 60; then
+            docker stop thingsix-forwarder
+            docker rm thingsix-forwarderx
+            echo "Container 'thingsix-forwarder' removed."
+        else
+            echo "Aborting..."
+            exit
+        fi
+    fi
+    
     if whiptail --yesno "You're almost done we now need to start the actual forwarder Docker Container. Are you ready?" 8 60; then
         docker run -d --name thingsix-forwarder -p 1685:1680/udp --restart unless-stopped -v /etc/thingsix-forwarder:/etc/thingsix-forwarder ghcr.io/thingsixfoundation/packet-handling/forwarder:1.1.1 --net=main
     else
