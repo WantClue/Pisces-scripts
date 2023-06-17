@@ -98,7 +98,7 @@ function onboard() {
 	fi
     sleep 3
 
-    if whiptail --yesno "You need to go into the WebUI of your Pisces Miner now and disable the forwarder. After that enable the forwarder again. Have you done so?" 8 60; then
+    if whiptail --yesno "You need to go into the WebUI of your Pisces Miner now and disable the forwarder. After that enable the forwarder again. Have you done so?" 14 60; then
             id=$(grep -Po 'local_id: \K.*' $local_id)
             echo -e "${CYAN}Please enter your Polygon Wallet address to onboard this device to your Wallet${NC}"
             read wallet
