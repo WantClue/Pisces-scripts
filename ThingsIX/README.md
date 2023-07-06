@@ -14,8 +14,8 @@ bash -i <(curl -s https://raw.githubusercontent.com/WantClue/Pisces-scripts/main
 
 # Roadmap
 
-- [] Refactor to Docker compose
-- [] Add Watchtower
+- [ ] Refactor to Docker compose
+- [ ] Add Watchtower
 
 
 
