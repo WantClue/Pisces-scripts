@@ -110,6 +110,23 @@ function onboard() {
 
 }
 
+function watchtower() {
+    echo -e "${GREEN}Module: Watchtower ThingsIX${NC}"
+    echo -e "${CYAN}Now we will automate your device to update ThingsIX Forwarder every time there is an update${NC}"
+	echo -e "${YELLOW}================================================================${NC}"
+    if [[ "$USER" != "root" ]]; then
+		echo -e "${CYAN}You are currently logged in as ${GREEN}$USER${NC}"
+		echo -e "${CYAN}Please switch to the root account use command 'sudo su -'.${NC}"
+		echo -e "${YELLOW}================================================================${NC}"
+		echo -e "${NC}"
+		exit
+	fi
+    sleep 3
+
+    docker run -d --name watchtower --restart unless-stopped -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --interval 43200 --cleanup --monitor-only thingsix-forwarder
+
+}
+
 
 
 
@@ -138,7 +155,8 @@ echo -e "${GREEN}Special thanks to hekopath and kotelohridski${NC}"
 echo -e "${YELLOW}================================================================${NC}"
 echo -e "${CYAN}1  - Installation of ThingsIX forwarder and mux${NC}"
 echo -e "${CYAN}2  - Onboarding of ThingsIX Gateway${NC}"
-echo -e "${CYAN}3  - Abort${NC}"
+echo -e "${CYAN}3  - Install update automation${NC}"
+echo -e "${CYAN}4  - Abort${NC}"
 echo -e "${YELLOW}================================================================${NC}"
 
 read -rp "Pick an option and hit ENTER: "
@@ -154,6 +172,11 @@ case "$REPLY" in
 		onboard
  ;;
  3) 
+		clear
+		sleep 1
+		watchtower
+ ;;
+ 4) 
 		clear
 		sleep 1
 		exit
